@@ -15,7 +15,7 @@ import java.util.Map;
 public class PostTester {
     @DataProvider
     public Object[][] datas() {
-        Object[][] datas = ExcelUtils.readExcel("/api.xlsx");
+        Object[][] datas = null;//ExcelUtils.readExcel("/api.xlsx");
 //                {"13145326785", "123456", "tom1"},
 //                {"1314532678", "123456", "tom2"},
 //                {"13145326785", "123456u", "tom3"},
@@ -23,6 +23,10 @@ public class PostTester {
     }
 
     @Test(dataProvider = "datas")
+    //每个接口对应一个测试用例文档
+    //所有测试用例放在一个eexcel中
+    //url各不相同
+    //各个接口参数不确定 给一个json字符串{"mobilephone","13146230254","pwd","123456"}
     public void test1(String mobilephone,String pwd,String regname){
         String url = "http://120.78.128.25:8080/futureloan/mvc/api/member/register";
         Map<String,String> paramsMap = new HashMap<>();
